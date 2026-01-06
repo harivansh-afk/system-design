@@ -68,7 +68,16 @@
 
 <div class="max-w-6xl mx-auto space-y-12">
   <!-- Hero Section -->
-  <div class="text-center space-y-6 py-8">
+  <div class="text-center space-y-6 py-8 relative">
+    <a
+      href="https://github.com/harivansh-afk/system-design"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="absolute top-0 right-0 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-800 border border-surface-700 text-surface-300 text-sm hover:bg-surface-700 hover:text-surface-100 transition-colors"
+    >
+      <Icons.Github class="w-4 h-4" />
+      Source
+    </a>
     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-900 border border-surface-800 text-surface-300 text-sm">
       <Icons.Sparkles class="w-4 h-4" />
       Interactive Visual Learning
