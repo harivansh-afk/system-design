@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-surface-700;
+  }
+
+  body {
+    @apply antialiased;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-surface-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-700 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-surface-600;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-surface-900 border border-surface-800 rounded-xl p-6;
+  }
+
+  .card-hover {
+    @apply card hover:border-surface-600 hover:bg-surface-800/50 transition-all duration-200 cursor-pointer;
+  }
+
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply btn bg-blue-600 hover:bg-blue-500 text-white;
+  }
+
+  .btn-secondary {
+    @apply btn bg-surface-800 hover:bg-surface-700 text-surface-200;
+  }
+
+  .section-title {
+    @apply text-2xl font-bold text-surface-100 mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-surface-400 mb-6;
+  }
+
+  .tag {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .tag-aws {
+    @apply tag bg-aws-orange/20 text-aws-orange;
+  }
+
+  .tag-gcp {
+    @apply tag bg-gcp-blue/20 text-gcp-blue;
+  }
+
+  .tag-concept {
+    @apply tag bg-purple-500/20 text-purple-400;
+  }
+
+  /* Animated flow lines for diagrams */
+  .flow-line {
+    stroke-dasharray: 5 5;
+    animation: flowAnimation 1s linear infinite;
+  }
+
+  @keyframes flowAnimation {
+    to {
+      stroke-dashoffset: -10;
+    }
+  }
+
+  /* Node styles for diagrams */
+  .diagram-node {
+    @apply bg-surface-800 border-2 border-surface-600 rounded-xl p-4 shadow-lg;
+    @apply hover:border-blue-500 hover:shadow-blue-500/20 transition-all duration-200;
+  }
+
+  .diagram-node-aws {
+    @apply diagram-node border-aws-orange/50 hover:border-aws-orange;
+  }
+
+  .diagram-node-gcp {
+    @apply diagram-node border-gcp-blue/50 hover:border-gcp-blue;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400;
+  }
+
+  .glass {
+    @apply bg-surface-900/80 backdrop-blur-lg;
+  }
+}
