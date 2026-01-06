@@ -43,6 +43,7 @@
       description: 'NOT possible in distributed systems',
       explanation: 'In a distributed system, network partitions are inevitable. When a partition occurs, you must choose between C and A.',
       examples: ['Single-node databases (PostgreSQL, MySQL on one server)', 'Not achievable in distributed systems'],
+      useCase: '',
       color: '#94A3B8',
       viable: false
     },
@@ -110,7 +111,9 @@
           <g 
             class="cursor-pointer" 
             onclick={() => selectCombination('CA')}
-            onmouseenter={() => {}}
+            role="button"
+            tabindex="0"
+            onkeydown={(e) => (e.key === 'Enter' || e.key === ' ') && selectCombination('CA')}
           >
             <line x1={vertices.C.x} y1={vertices.C.y} x2={vertices.A.x} y2={vertices.A.y} 
                   stroke={selectedChoice === 'CA' ? '#94A3B8' : 'transparent'} 
@@ -132,6 +135,9 @@
           <g 
             class="cursor-pointer" 
             onclick={() => selectCombination('CP')}
+            role="button"
+            tabindex="0"
+            onkeydown={(e) => (e.key === 'Enter' || e.key === ' ') && selectCombination('CP')}
           >
             <line x1={vertices.C.x} y1={vertices.C.y} x2={vertices.P.x} y2={vertices.P.y} 
                   stroke={selectedChoice === 'CP' ? '#8B5CF6' : 'transparent'} 
@@ -148,6 +154,9 @@
           <g 
             class="cursor-pointer" 
             onclick={() => selectCombination('AP')}
+            role="button"
+            tabindex="0"
+            onkeydown={(e) => (e.key === 'Enter' || e.key === ' ') && selectCombination('AP')}
           >
             <line x1={vertices.A.x} y1={vertices.A.y} x2={vertices.P.x} y2={vertices.P.y} 
                   stroke={selectedChoice === 'AP' ? '#EC4899' : 'transparent'} 
@@ -164,6 +173,7 @@
           {#each Object.entries(vertices) as [key, vertex]}
             <g 
               class="cursor-pointer"
+              role="presentation"
               onmouseenter={() => hoveredVertex = key as 'C' | 'A' | 'P'}
               onmouseleave={() => hoveredVertex = null}
             >
@@ -200,6 +210,7 @@
         {#each Object.entries(vertices) as [key, vertex]}
           <div 
             class="p-4 rounded-lg border transition-all duration-200"
+            role="presentation"
             class:bg-surface-800={hoveredVertex !== key}
             class:border-surface-700={hoveredVertex !== key}
             style:background-color={hoveredVertex === key ? `${vertex.color}20` : undefined}

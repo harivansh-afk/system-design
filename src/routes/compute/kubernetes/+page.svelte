@@ -119,6 +119,23 @@
     { step: 5, title: 'Container creation', desc: 'Kubelet tells runtime to start containers' },
     { step: 6, title: 'Running', desc: 'Pod running, kube-proxy sets up networking' }
   ];
+
+  const accent = {
+    blue: { badge: 'bg-blue-500/20 text-blue-300', dot: 'bg-blue-500', text: 'text-blue-400', panel: 'bg-blue-500/20 border border-blue-500/30' },
+    purple: { badge: 'bg-purple-500/20 text-purple-300', dot: 'bg-purple-500', text: 'text-purple-400', panel: 'bg-purple-500/20 border border-purple-500/30' },
+    green: { badge: 'bg-green-500/20 text-green-300', dot: 'bg-green-500', text: 'text-green-400', panel: 'bg-green-500/20 border border-green-500/30' },
+    orange: { badge: 'bg-orange-500/20 text-orange-300', dot: 'bg-orange-500', text: 'text-orange-400', panel: 'bg-orange-500/20 border border-orange-500/30' },
+    cyan: { badge: 'bg-cyan-500/20 text-cyan-300', dot: 'bg-cyan-500', text: 'text-cyan-400', panel: 'bg-cyan-500/20 border border-cyan-500/30' },
+    yellow: { badge: 'bg-yellow-500/20 text-yellow-300', dot: 'bg-yellow-500', text: 'text-yellow-400', panel: 'bg-yellow-500/20 border border-yellow-500/30' },
+    pink: { badge: 'bg-pink-500/20 text-pink-300', dot: 'bg-pink-500', text: 'text-pink-400', panel: 'bg-pink-500/20 border border-pink-500/30' },
+    gray: { badge: 'bg-surface-800 text-surface-300 border border-surface-700', dot: 'bg-surface-600', text: 'text-surface-300', panel: 'bg-surface-800/60 border border-surface-800' }
+  } as const;
+
+  type AccentKey = keyof typeof accent;
+
+  function getAccent(color: string): (typeof accent)[AccentKey] {
+    return accent[(color in accent ? color : 'gray') as AccentKey];
+  }
 </script>
 
 <svelte:head>
@@ -126,27 +143,27 @@
 </svelte:head>
 
 <div class="max-w-6xl mx-auto">
-  <h1 class="text-3xl font-bold text-white mb-2">Kubernetes Architecture</h1>
-  <p class="text-gray-400 mb-8">Understanding the control plane, worker nodes, and how they work together</p>
+  <h1 class="text-3xl font-bold text-surface-100 mb-2">Kubernetes Architecture</h1>
+  <p class="text-surface-400 mb-8">Understanding the control plane, worker nodes, and how they work together</p>
 
   <!-- Overview Diagram -->
   <section class="mb-12">
-    <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
+    <div class="card">
       <div class="grid md:grid-cols-2 gap-8">
         <!-- Control Plane -->
         <div class="p-4 rounded-xl bg-blue-500/10 border border-blue-500/30">
           <h3 class="text-lg font-semibold text-blue-400 mb-4 text-center">Control Plane</h3>
-          <p class="text-gray-400 text-sm text-center mb-4">The brain - makes decisions about the cluster</p>
+          <p class="text-surface-400 text-sm text-center mb-4">The brain - makes decisions about the cluster</p>
 
           <div class="grid grid-cols-2 gap-3">
             {#each controlPlaneComponents.slice(0, 4) as component}
               <button
-                class="p-3 rounded-lg bg-gray-800/50 border border-gray-600 hover:border-gray-400 transition-all text-left"
+                class="p-3 rounded-lg bg-surface-900 border border-surface-800 hover:border-surface-700 transition-colors text-left"
                 class:border-blue-500={selectedComponent === component.id}
                 on:click={() => selectedComponent = selectedComponent === component.id ? null : component.id}
               >
-                <div class="text-white font-medium text-sm">{component.name}</div>
-                <div class="text-gray-500 text-xs mt-1 line-clamp-2">{component.description}</div>
+                <div class="text-surface-100 font-medium text-sm">{component.name}</div>
+                <div class="text-surface-500 text-xs mt-1 line-clamp-2">{component.description}</div>
               </button>
             {/each}
           </div>
@@ -155,17 +172,17 @@
         <!-- Worker Nodes -->
         <div class="p-4 rounded-xl bg-green-500/10 border border-green-500/30">
           <h3 class="text-lg font-semibold text-green-400 mb-4 text-center">Worker Nodes</h3>
-          <p class="text-gray-400 text-sm text-center mb-4">The muscle - runs your actual workloads</p>
+          <p class="text-surface-400 text-sm text-center mb-4">The muscle - runs your actual workloads</p>
 
           <div class="space-y-3">
             {#each nodeComponents as component}
               <button
-                class="w-full p-3 rounded-lg bg-gray-800/50 border border-gray-600 hover:border-gray-400 transition-all text-left"
+                class="w-full p-3 rounded-lg bg-surface-900 border border-surface-800 hover:border-surface-700 transition-colors text-left"
                 class:border-green-500={selectedComponent === component.id}
                 on:click={() => selectedComponent = selectedComponent === component.id ? null : component.id}
               >
-                <div class="text-white font-medium text-sm">{component.name}</div>
-                <div class="text-gray-500 text-xs mt-1">{component.description}</div>
+                <div class="text-surface-100 font-medium text-sm">{component.name}</div>
+                <div class="text-surface-500 text-xs mt-1">{component.description}</div>
               </button>
             {/each}
           </div>
@@ -177,12 +194,12 @@
         {@const allComponents = [...controlPlaneComponents, ...nodeComponents]}
         {@const component = allComponents.find(c => c.id === selectedComponent)}
         {#if component}
-          <div class="mt-6 p-4 bg-gray-700/50 rounded-lg border border-gray-600">
-            <h4 class="text-white font-semibold mb-3">{component.name}</h4>
+          <div class="mt-6 p-4 bg-surface-800/60 rounded-lg border border-surface-800">
+            <h4 class="text-surface-100 font-semibold mb-3">{component.name}</h4>
             <ul class="grid md:grid-cols-2 gap-2">
               {#each component.details as detail}
-                <li class="flex items-start gap-2 text-gray-300 text-sm">
-                  <span class="text-blue-400 mt-0.5">-</span>
+                <li class="flex items-start gap-2 text-surface-300 text-sm">
+                  <span class="text-surface-500 mt-0.5">-</span>
                   {detail}
                 </li>
               {/each}
@@ -195,24 +212,24 @@
 
   <!-- Control Plane Deep Dive -->
   <section class="mb-12">
-    <h2 class="text-xl font-semibold text-white mb-4">Control Plane Components</h2>
+    <h2 class="text-xl font-semibold text-surface-100 mb-4">Control Plane Components</h2>
 
     <div class="space-y-4">
       {#each controlPlaneComponents as component}
-        <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
+        <div class="card">
           <div class="flex items-start justify-between mb-4">
             <div>
-              <h3 class="text-lg font-semibold text-white">{component.name}</h3>
-              <p class="text-gray-400 text-sm">{component.description}</p>
+              <h3 class="text-lg font-semibold text-surface-100">{component.name}</h3>
+              <p class="text-surface-400 text-sm">{component.description}</p>
             </div>
-            <span class="px-3 py-1 rounded-full text-xs font-medium bg-{component.color}-500/20 text-{component.color}-400">
+            <span class={"px-3 py-1 rounded-full text-xs font-medium " + getAccent(component.color).badge}>
               Control Plane
             </span>
           </div>
           <div class="grid md:grid-cols-2 gap-3">
             {#each component.details as detail}
-              <div class="flex items-center gap-2 p-2 bg-gray-700/30 rounded-lg text-sm text-gray-300">
-                <span class="w-2 h-2 rounded-full bg-{component.color}-500"></span>
+              <div class="flex items-center gap-2 p-2 bg-surface-800/40 border border-surface-800 rounded-lg text-sm text-surface-300">
+                <span class={"w-2 h-2 rounded-full " + getAccent(component.color).dot}></span>
                 {detail}
               </div>
             {/each}
@@ -224,10 +241,10 @@
 
   <!-- Request Flow -->
   <section class="mb-12">
-    <h2 class="text-xl font-semibold text-white mb-4">How a Pod Gets Scheduled</h2>
-    <p class="text-gray-400 mb-6">Follow the journey from kubectl apply to running pod</p>
+    <h2 class="text-xl font-semibold text-surface-100 mb-4">How a Pod Gets Scheduled</h2>
+    <p class="text-surface-400 mb-6">Follow the journey from kubectl apply to running pod</p>
 
-    <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
+    <div class="card">
       <div class="relative">
         <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-blue-500/30"></div>
         <div class="space-y-6">
@@ -236,9 +253,9 @@
               <div class="absolute left-0 w-12 h-12 rounded-full bg-blue-500/20 border-2 border-blue-500 flex items-center justify-center text-blue-400 font-bold">
                 {step.step}
               </div>
-              <div class="bg-gray-700/50 rounded-lg p-4">
-                <div class="text-white font-medium">{step.title}</div>
-                <div class="text-gray-400 text-sm mt-1">{step.desc}</div>
+              <div class="bg-surface-800/60 border border-surface-800 rounded-lg p-4">
+                <div class="text-surface-100 font-medium">{step.title}</div>
+                <div class="text-surface-400 text-sm mt-1">{step.desc}</div>
               </div>
             </div>
           {/each}
@@ -249,18 +266,18 @@
 
   <!-- Pod Lifecycle -->
   <section class="mb-12">
-    <h2 class="text-xl font-semibold text-white mb-4">Pod Lifecycle</h2>
+    <h2 class="text-xl font-semibold text-surface-100 mb-4">Pod Lifecycle</h2>
 
-    <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
+    <div class="card">
       <div class="flex flex-wrap items-center justify-center gap-4">
         {#each podLifecycle as phase, i}
           <div class="flex items-center">
-            <div class="p-3 rounded-lg bg-{phase.color}-500/20 border border-{phase.color}-500/30 text-center min-w-[120px]">
-              <div class="text-{phase.color}-400 font-semibold text-sm">{phase.phase}</div>
-              <div class="text-gray-500 text-xs mt-1">{phase.desc}</div>
+            <div class={"p-3 rounded-lg text-center min-w-[120px] " + getAccent(phase.color).panel}>
+              <div class={getAccent(phase.color).text + " font-semibold text-sm"}>{phase.phase}</div>
+              <div class="text-surface-500 text-xs mt-1">{phase.desc}</div>
             </div>
             {#if i < podLifecycle.length - 1}
-              <div class="mx-2 text-gray-500">-></div>
+              <div class="mx-2 text-surface-600">-></div>
             {/if}
           </div>
         {/each}
@@ -270,68 +287,68 @@
 
   <!-- Key Concepts -->
   <section class="mb-12">
-    <h2 class="text-xl font-semibold text-white mb-4">Key Kubernetes Objects</h2>
+    <h2 class="text-xl font-semibold text-surface-100 mb-4">Key Kubernetes Objects</h2>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div class="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+      <div class="bg-surface-900 rounded-xl p-4 border border-surface-800">
         <div class="text-blue-400 font-semibold mb-2">Pod</div>
-        <p class="text-gray-400 text-sm">Smallest deployable unit. One or more containers that share network/storage.</p>
+        <p class="text-surface-400 text-sm">Smallest deployable unit. One or more containers that share network/storage.</p>
       </div>
-      <div class="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+      <div class="bg-surface-900 rounded-xl p-4 border border-surface-800">
         <div class="text-green-400 font-semibold mb-2">Deployment</div>
-        <p class="text-gray-400 text-sm">Manages ReplicaSets. Handles rolling updates and rollbacks.</p>
+        <p class="text-surface-400 text-sm">Manages ReplicaSets. Handles rolling updates and rollbacks.</p>
       </div>
-      <div class="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+      <div class="bg-surface-900 rounded-xl p-4 border border-surface-800">
         <div class="text-purple-400 font-semibold mb-2">Service</div>
-        <p class="text-gray-400 text-sm">Stable network endpoint for pods. ClusterIP, NodePort, LoadBalancer.</p>
+        <p class="text-surface-400 text-sm">Stable network endpoint for pods. ClusterIP, NodePort, LoadBalancer.</p>
       </div>
-      <div class="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+      <div class="bg-surface-900 rounded-xl p-4 border border-surface-800">
         <div class="text-orange-400 font-semibold mb-2">ConfigMap</div>
-        <p class="text-gray-400 text-sm">Non-sensitive configuration data. Injected as env vars or files.</p>
+        <p class="text-surface-400 text-sm">Non-sensitive configuration data. Injected as env vars or files.</p>
       </div>
-      <div class="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+      <div class="bg-surface-900 rounded-xl p-4 border border-surface-800">
         <div class="text-red-400 font-semibold mb-2">Secret</div>
-        <p class="text-gray-400 text-sm">Sensitive data like passwords, tokens. Base64 encoded (not encrypted!).</p>
+        <p class="text-surface-400 text-sm">Sensitive data like passwords, tokens. Base64 encoded (not encrypted!).</p>
       </div>
-      <div class="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+      <div class="bg-surface-900 rounded-xl p-4 border border-surface-800">
         <div class="text-yellow-400 font-semibold mb-2">Ingress</div>
-        <p class="text-gray-400 text-sm">HTTP routing rules. Path-based routing to Services.</p>
+        <p class="text-surface-400 text-sm">HTTP routing rules. Path-based routing to Services.</p>
       </div>
-      <div class="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+      <div class="bg-surface-900 rounded-xl p-4 border border-surface-800">
         <div class="text-cyan-400 font-semibold mb-2">StatefulSet</div>
-        <p class="text-gray-400 text-sm">For stateful apps. Stable network identity and persistent storage.</p>
+        <p class="text-surface-400 text-sm">For stateful apps. Stable network identity and persistent storage.</p>
       </div>
-      <div class="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+      <div class="bg-surface-900 rounded-xl p-4 border border-surface-800">
         <div class="text-pink-400 font-semibold mb-2">DaemonSet</div>
-        <p class="text-gray-400 text-sm">Run pod on every node. Used for logging, monitoring agents.</p>
+        <p class="text-surface-400 text-sm">Run pod on every node. Used for logging, monitoring agents.</p>
       </div>
-      <div class="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+      <div class="bg-surface-900 rounded-xl p-4 border border-surface-800">
         <div class="text-indigo-400 font-semibold mb-2">HPA</div>
-        <p class="text-gray-400 text-sm">Horizontal Pod Autoscaler. Scale pods based on CPU/memory/custom metrics.</p>
+        <p class="text-surface-400 text-sm">Horizontal Pod Autoscaler. Scale pods based on CPU/memory/custom metrics.</p>
       </div>
     </div>
   </section>
 
   <!-- Networking -->
   <section class="mb-12">
-    <h2 class="text-xl font-semibold text-white mb-4">Kubernetes Networking Model</h2>
+    <h2 class="text-xl font-semibold text-surface-100 mb-4">Kubernetes Networking Model</h2>
 
-    <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
+    <div class="card">
       <div class="grid md:grid-cols-3 gap-6">
         <div class="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
           <h4 class="text-blue-400 font-semibold mb-2">Pod-to-Pod</h4>
-          <p class="text-gray-400 text-sm mb-2">Every pod gets a unique IP. Pods can communicate directly without NAT.</p>
-          <div class="text-xs text-gray-500">Implemented by CNI plugin (Calico, Cilium, etc.)</div>
+          <p class="text-surface-400 text-sm mb-2">Every pod gets a unique IP. Pods can communicate directly without NAT.</p>
+          <div class="text-xs text-surface-500">Implemented by CNI plugin (Calico, Cilium, etc.)</div>
         </div>
         <div class="p-4 bg-green-500/10 rounded-lg border border-green-500/30">
           <h4 class="text-green-400 font-semibold mb-2">Pod-to-Service</h4>
-          <p class="text-gray-400 text-sm mb-2">Services provide stable virtual IPs (ClusterIP). kube-proxy routes to pods.</p>
-          <div class="text-xs text-gray-500">Uses iptables or IPVS rules</div>
+          <p class="text-surface-400 text-sm mb-2">Services provide stable virtual IPs (ClusterIP). kube-proxy routes to pods.</p>
+          <div class="text-xs text-surface-500">Uses iptables or IPVS rules</div>
         </div>
         <div class="p-4 bg-purple-500/10 rounded-lg border border-purple-500/30">
           <h4 class="text-purple-400 font-semibold mb-2">External-to-Service</h4>
-          <p class="text-gray-400 text-sm mb-2">NodePort, LoadBalancer, or Ingress expose services externally.</p>
-          <div class="text-xs text-gray-500">Ingress for HTTP, LoadBalancer for TCP/UDP</div>
+          <p class="text-surface-400 text-sm mb-2">NodePort, LoadBalancer, or Ingress expose services externally.</p>
+          <div class="text-xs text-surface-500">Ingress for HTTP, LoadBalancer for TCP/UDP</div>
         </div>
       </div>
     </div>
@@ -339,54 +356,54 @@
 
   <!-- Common Patterns -->
   <section>
-    <h2 class="text-xl font-semibold text-white mb-4">Production Best Practices</h2>
+    <h2 class="text-xl font-semibold text-surface-100 mb-4">Production Best Practices</h2>
 
     <div class="grid md:grid-cols-2 gap-6">
-      <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
+      <div class="card">
         <h4 class="text-green-400 font-medium mb-3">DO</h4>
         <ul class="space-y-2">
-          <li class="flex items-start gap-2 text-gray-300 text-sm">
+          <li class="flex items-start gap-2 text-surface-300 text-sm">
             <span class="text-green-400">+</span>
             Set resource requests and limits on all pods
           </li>
-          <li class="flex items-start gap-2 text-gray-300 text-sm">
+          <li class="flex items-start gap-2 text-surface-300 text-sm">
             <span class="text-green-400">+</span>
             Use liveness and readiness probes
           </li>
-          <li class="flex items-start gap-2 text-gray-300 text-sm">
+          <li class="flex items-start gap-2 text-surface-300 text-sm">
             <span class="text-green-400">+</span>
             Run multiple replicas with anti-affinity
           </li>
-          <li class="flex items-start gap-2 text-gray-300 text-sm">
+          <li class="flex items-start gap-2 text-surface-300 text-sm">
             <span class="text-green-400">+</span>
             Use namespaces for isolation
           </li>
-          <li class="flex items-start gap-2 text-gray-300 text-sm">
+          <li class="flex items-start gap-2 text-surface-300 text-sm">
             <span class="text-green-400">+</span>
             Backup etcd regularly
           </li>
         </ul>
       </div>
-      <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
+      <div class="card">
         <h4 class="text-red-400 font-medium mb-3">DON'T</h4>
         <ul class="space-y-2">
-          <li class="flex items-start gap-2 text-gray-300 text-sm">
+          <li class="flex items-start gap-2 text-surface-300 text-sm">
             <span class="text-red-400">-</span>
             Run workloads on control plane nodes
           </li>
-          <li class="flex items-start gap-2 text-gray-300 text-sm">
+          <li class="flex items-start gap-2 text-surface-300 text-sm">
             <span class="text-red-400">-</span>
             Use :latest image tags in production
           </li>
-          <li class="flex items-start gap-2 text-gray-300 text-sm">
+          <li class="flex items-start gap-2 text-surface-300 text-sm">
             <span class="text-red-400">-</span>
             Store secrets in ConfigMaps
           </li>
-          <li class="flex items-start gap-2 text-gray-300 text-sm">
+          <li class="flex items-start gap-2 text-surface-300 text-sm">
             <span class="text-red-400">-</span>
             Skip pod disruption budgets
           </li>
-          <li class="flex items-start gap-2 text-gray-300 text-sm">
+          <li class="flex items-start gap-2 text-surface-300 text-sm">
             <span class="text-red-400">-</span>
             Ignore resource quotas in multi-tenant clusters
           </li>

@@ -32,9 +32,11 @@
   let isPlaying = $state(autoPlay);
   let intervalId: ReturnType<typeof setInterval> | null = null;
 
-  function getIcon(iconName?: string) {
-    if (!iconName) return Icons.Circle;
-    return (Icons as Record<string, typeof Icons.Box>)[iconName] || Icons.Circle;
+  type IconComponent = typeof Icons.Box;
+
+  function getIcon(iconName?: string): IconComponent {
+    const iconMap = Icons as unknown as Record<string, IconComponent>;
+    return (iconName ? iconMap[iconName] : null) ?? (Icons.Circle as IconComponent);
   }
 
   function nextStep() {
@@ -202,6 +204,7 @@
       {#each steps as _, i}
         <button
           onclick={() => goToStep(i)}
+          aria-label={"Go to step " + (i + 1)}
           class="w-2 h-2 rounded-full transition-all duration-200"
           class:bg-surface-100={i === currentStep}
           class:w-4={i === currentStep}

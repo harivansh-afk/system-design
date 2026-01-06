@@ -31,9 +31,11 @@
     return nodes.find(n => n.id === id);
   }
 
-  function getIcon(iconName?: string) {
-    if (!iconName) return Icons.HelpCircle;
-    return (Icons as Record<string, typeof Icons.Box>)[iconName] || Icons.HelpCircle;
+  type IconComponent = typeof Icons.Box;
+
+  function getIcon(iconName?: string): IconComponent {
+    const iconMap = Icons as unknown as Record<string, IconComponent>;
+    return (iconName ? iconMap[iconName] : null) ?? (Icons.HelpCircle as IconComponent);
   }
 
   function answer(nodeId: string, isYes: boolean) {

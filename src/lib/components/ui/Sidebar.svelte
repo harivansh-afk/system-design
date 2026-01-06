@@ -4,8 +4,11 @@
   import * as Icons from 'lucide-svelte';
   import { slide } from 'svelte/transition';
 
-  function getIcon(iconName: string) {
-    return (Icons as Record<string, typeof Icons.Home>)[iconName] || Icons.Circle;
+  type IconComponent = typeof Icons.Box;
+
+  function getIcon(iconName: string): IconComponent {
+    const iconMap = Icons as unknown as Record<string, IconComponent>;
+    return iconMap[iconName] || (Icons.Circle as IconComponent);
   }
 
   function toggleSection(id: string) {

@@ -1,0 +1,7 @@
+[2026-01-06 23:38:01] Hook triggered with input: {"session_id":"51726d25-d24f-48e8-bb5d-a775dc434ee4","transcript_path":"/Users/rathi/.claude/projects/-Users-rathi-Documents-GitHub-infra-web/51726d25-d24f-48e8-bb5d-a775dc434ee4.jsonl","cwd":"/Users/rathi/Documents/GitHub/infra-web","hook_event_name":"SessionEnd","reason":"prompt_input_exit"}
+[2026-01-06 23:38:01] Transcript: /Users/rathi/.claude/projects/-Users-rathi-Documents-GitHub-infra-web/51726d25-d24f-48e8-bb5d-a775dc434ee4.jsonl
+[2026-01-06 23:38:01] Session ID: 51726d25-d24f-48e8-bb5d-a775dc434ee4
+[2026-01-06 23:38:01] Project dir: /Users/rathi/Documents/GitHub/infra-web
+[2026-01-06 23:38:01] Lock file created
+[2026-01-06 23:38:01] Transcript line count:        4
+[2026-01-06 23:38:01] Session too short, skipping retrospective

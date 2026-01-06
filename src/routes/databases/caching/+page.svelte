@@ -159,40 +159,46 @@
     title: 'Cache-Aside Pattern Flow',
     steps: [
       {
+        id: 'cache-aside-1',
         title: 'Application Requests Data',
-        content: 'User requests user profile for user_id=123',
+        description: 'User requests user profile for user_id=123',
         details: 'The application receives a request that needs data from the database.',
-        tips: ['Common entry point: API endpoint, service method']
+        tip: 'Common entry point: API endpoint, service method.'
       },
       {
+        id: 'cache-aside-2',
         title: 'Check Cache First',
-        content: 'GET user:123 from Redis',
+        description: 'GET user:123 from Redis',
         details: 'Application checks if the data exists in cache before hitting the database.',
-        tips: ['Use consistent key naming: entity:id', 'Handle cache connection failures gracefully']
+        tip: 'Use consistent key naming: entity:id. Handle cache connection failures gracefully.'
       },
       {
+        id: 'cache-aside-3',
         title: 'Cache Hit - Return Immediately',
-        content: 'Data found! Return cached user profile',
+        description: 'Data found! Return cached user profile',
         details: 'If data is in cache, return it immediately. This is the fast path.',
-        tips: ['Typical cache hit latency: < 1ms', 'Log cache hits for monitoring']
+        tip: 'Typical cache hit latency: < 1ms. Log cache hits for monitoring.'
       },
       {
+        id: 'cache-aside-4',
         title: 'Cache Miss - Query Database',
-        content: 'SELECT * FROM users WHERE id = 123',
+        description: 'SELECT * FROM users WHERE id = 123',
         details: 'If cache miss, query the primary database for the data.',
-        tips: ['This is the slow path', 'Consider query optimization']
+        tip: 'This is the slow path. Consider query optimization.'
       },
       {
+        id: 'cache-aside-5',
         title: 'Store in Cache',
-        content: 'SET user:123 with TTL 3600 seconds',
+        description: 'SET user:123 with TTL 3600 seconds',
         details: 'After getting data from DB, store it in cache for future requests.',
-        tips: ['Always set a TTL to prevent stale data', 'Consider cache size limits']
+        tip: 'Always set a TTL to prevent stale data. Consider cache size limits.'
       },
       {
+        id: 'cache-aside-6',
         title: 'Return Data to Caller',
-        content: 'Return user profile to client',
+        description: 'Return user profile to client',
         details: 'Finally return the data. Next request will hit the cache.',
-        tips: ['Monitor cache hit rate', 'Aim for > 90% hit rate']
+        tip: 'Monitor cache hit rate. Aim for > 90% hit rate.'
       }
     ]
   };

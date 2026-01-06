@@ -254,28 +254,25 @@
         {
           name: 'Cloudflare',
           icon: 'Cloud',
-          color: 'orange',
           pros: ['Free tier', 'Fast propagation', 'DDoS protection'],
           bestFor: 'Most websites'
         },
         {
           name: 'Route 53',
           icon: 'Compass',
-          color: 'yellow',
           pros: ['AWS integration', 'Health checks', 'Geo-routing'],
           bestFor: 'AWS infrastructure'
         },
         {
           name: 'Cloud DNS',
           icon: 'Cloud',
-          color: 'blue',
           pros: ['GCP integration', '100% SLA', 'Global anycast'],
           bestFor: 'GCP infrastructure'
         }
       ] as provider}
         <div class="bg-surface-800 rounded-lg p-4">
           <div class="flex items-center gap-2 mb-3">
-            <Icons.Cloud class="w-5 h-5 text-{provider.color}-400" />
+            <Icons.Cloud class="w-5 h-5 text-surface-300" />
             <span class="font-medium text-surface-200">{provider.name}</span>
           </div>
           <ul class="space-y-1 mb-3">

@@ -53,40 +53,46 @@
     title: 'Lambda Cold Start Flow',
     steps: [
       {
+        id: 'cold-start-1',
         title: 'Invocation Request',
-        content: 'API Gateway triggers Lambda function',
+        description: 'API Gateway triggers Lambda function',
         details: 'A request arrives but no warm execution environment is available.',
-        tips: ['Cold starts affect ~1% of requests', 'More common during traffic spikes']
+        tip: 'Cold starts affect ~1% of requests. More common during traffic spikes.'
       },
       {
+        id: 'cold-start-2',
         title: 'Container Provisioning',
-        content: 'Lambda allocates compute resources',
+        description: 'Lambda allocates compute resources',
         details: 'AWS provisions a micro-VM with the configured memory. More memory = more CPU.',
-        tips: ['Memory range: 128MB - 10GB', 'CPU scales proportionally with memory']
+        tip: 'Memory range: 128MB - 10GB. CPU scales proportionally with memory.'
       },
       {
+        id: 'cold-start-3',
         title: 'Runtime Initialization',
-        content: 'Load Python/Node.js/Java runtime',
+        description: 'Load Python/Node.js/Java runtime',
         details: 'The language runtime is loaded and initialized in the container.',
-        tips: ['Python/Node.js: ~100-200ms', 'Java: ~500ms-1s (JVM startup)']
+        tip: 'Python/Node.js: ~100-200ms. Java: ~500ms-1s (JVM startup).'
       },
       {
+        id: 'cold-start-4',
         title: 'Function Code Loading',
-        content: 'Download and extract deployment package',
+        description: 'Download and extract deployment package',
         details: 'Your code is downloaded from S3 and extracted. Larger packages take longer.',
-        tips: ['Keep deployment package small', 'Use Lambda Layers for shared code']
+        tip: 'Keep deployment package small. Use Lambda Layers for shared code.'
       },
       {
+        id: 'cold-start-5',
         title: 'Static Initialization',
-        content: 'Run code outside handler (global scope)',
+        description: 'Run code outside handler (global scope)',
         details: 'Code at module level runs once per container. Initialize DB connections here.',
-        tips: ['Initialize SDK clients outside handler', 'This code runs once per container lifecycle']
+        tip: 'Initialize SDK clients outside handler. This code runs once per container lifecycle.'
       },
       {
+        id: 'cold-start-6',
         title: 'Handler Execution',
-        content: 'Your function code runs',
+        description: 'Your function code runs',
         details: 'Finally, your handler function executes. Container is now "warm".',
-        tips: ['Subsequent invocations skip steps 1-5', 'Warm container reused for ~15 minutes']
+        tip: 'Subsequent invocations skip steps 1-5. Warm container reused for ~15 minutes.'
       }
     ]
   };

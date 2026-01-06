@@ -21,8 +21,11 @@
     onclick
   }: Props = $props();
 
-  function getIcon(iconName: string) {
-    return (Icons as Record<string, typeof Icons.Box>)[iconName] || Icons.Box;
+  type IconComponent = typeof Icons.Box;
+
+  function getIcon(iconName: string): IconComponent {
+    const iconMap = Icons as unknown as Record<string, IconComponent>;
+    return iconMap[iconName] || Icons.Box;
   }
 
   const Icon = $derived(getIcon(icon));

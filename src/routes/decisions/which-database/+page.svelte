@@ -306,30 +306,30 @@
       <div class="space-y-3">
         <h4 class="text-sm font-medium text-surface-400 uppercase tracking-wide">By Use Case</h4>
         {#each [
-          { case: 'E-commerce orders', db: 'PostgreSQL', color: 'blue' },
-          { case: 'User profiles', db: 'MongoDB', color: 'green' },
-          { case: 'Session caching', db: 'Redis', color: 'red' },
-          { case: 'IoT sensor data', db: 'TimescaleDB', color: 'purple' },
-          { case: 'Social graph', db: 'Neo4j', color: 'pink' }
+          { case: 'E-commerce orders', db: 'PostgreSQL' },
+          { case: 'User profiles', db: 'MongoDB' },
+          { case: 'Session caching', db: 'Redis' },
+          { case: 'IoT sensor data', db: 'TimescaleDB' },
+          { case: 'Social graph', db: 'Neo4j' }
         ] as item}
           <div class="flex items-center justify-between p-2 bg-surface-800 rounded-lg">
             <span class="text-sm text-surface-300">{item.case}</span>
-            <span class="text-sm font-medium text-{item.color}-400">{item.db}</span>
+            <span class="text-sm font-medium text-surface-200">{item.db}</span>
           </div>
         {/each}
       </div>
       <div class="space-y-3">
         <h4 class="text-sm font-medium text-surface-400 uppercase tracking-wide">By Data Type</h4>
         {#each [
-          { type: 'Relational', db: 'PostgreSQL/MySQL', color: 'blue' },
-          { type: 'Documents', db: 'MongoDB/Firestore', color: 'green' },
-          { type: 'Key-Value', db: 'Redis/DynamoDB', color: 'yellow' },
-          { type: 'Time-Series', db: 'TimescaleDB/InfluxDB', color: 'purple' },
-          { type: 'Graph', db: 'Neo4j/Neptune', color: 'pink' }
+          { type: 'Relational', db: 'PostgreSQL/MySQL' },
+          { type: 'Documents', db: 'MongoDB/Firestore' },
+          { type: 'Key-Value', db: 'Redis/DynamoDB' },
+          { type: 'Time-Series', db: 'TimescaleDB/InfluxDB' },
+          { type: 'Graph', db: 'Neo4j/Neptune' }
         ] as item}
           <div class="flex items-center justify-between p-2 bg-surface-800 rounded-lg">
             <span class="text-sm text-surface-300">{item.type}</span>
-            <span class="text-sm font-medium text-{item.color}-400">{item.db}</span>
+            <span class="text-sm font-medium text-surface-200">{item.db}</span>
           </div>
         {/each}
       </div>
