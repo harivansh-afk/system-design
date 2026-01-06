@@ -85,8 +85,8 @@
           {/if}
           <span 
             class="px-3 py-1 rounded-full text-sm transition-colors"
-            class:bg-blue-600={isLast}
-            class:text-white={isLast}
+            class:bg-surface-100={isLast}
+            class:text-surface-950={isLast}
             class:bg-surface-800={!isLast}
             class:text-surface-400={!isLast}
           >
@@ -110,8 +110,8 @@
       {#if currentNode.type === 'question'}
         <!-- Question Node -->
         <div class="text-center space-y-6">
-          <div class="w-16 h-16 mx-auto rounded-full bg-blue-500/20 flex items-center justify-center">
-            <Icons.HelpCircle class="w-8 h-8 text-blue-400" />
+          <div class="w-16 h-16 mx-auto rounded-full bg-surface-800 border border-surface-700 flex items-center justify-center">
+            <Icons.HelpCircle class="w-8 h-8 text-surface-300" />
           </div>
           
           <div>
@@ -143,8 +143,8 @@
         <!-- Answer Node -->
         {@const Icon = getIcon(currentNode.icon)}
         <div class="text-center space-y-6">
-          <div class="w-20 h-20 mx-auto rounded-full bg-green-500/20 flex items-center justify-center">
-            <Icon class="w-10 h-10 text-green-400" />
+          <div class="w-20 h-20 mx-auto rounded-full bg-surface-800 border border-surface-700 flex items-center justify-center">
+            <Icon class="w-10 h-10 text-surface-200" />
           </div>
           
           <div>
@@ -165,8 +165,8 @@
           {#if currentNode.alternatives && currentNode.alternatives.length > 0}
             <div class="text-left bg-surface-800 rounded-lg p-4 border border-surface-700">
               <div class="flex items-center gap-2 mb-2">
-                <Icons.GitBranch class="w-5 h-5 text-purple-400" />
-                <span class="font-medium text-purple-400">Alternatives to consider</span>
+                <Icons.GitBranch class="w-5 h-5 text-surface-300" />
+                <span class="font-medium text-surface-300">Alternatives to consider</span>
               </div>
               <ul class="space-y-1">
                 {#each currentNode.alternatives as alt}

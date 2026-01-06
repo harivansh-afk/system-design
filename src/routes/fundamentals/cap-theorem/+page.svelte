@@ -295,18 +295,18 @@
   {/if}
 
   <!-- Key Insight -->
-  <div class="card bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-blue-500/30">
+  <div class="card">
     <div class="flex items-start gap-4">
-      <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0">
-        <Icons.Sparkles class="w-5 h-5 text-blue-400" />
+      <div class="w-10 h-10 rounded-lg bg-surface-800 border border-surface-700 flex items-center justify-center flex-shrink-0">
+        <Icons.Sparkles class="w-5 h-5 text-surface-300" />
       </div>
       <div>
         <h3 class="font-semibold text-surface-100 mb-2">The Key Insight</h3>
         <p class="text-surface-300 text-sm">
           In practice, <strong class="text-yellow-400">Partition Tolerance (P) is mandatory</strong> for any 
           distributed system - network failures are a reality. This means your real choice is between 
-          <strong class="text-purple-400">CP</strong> (consistency over availability) and 
-          <strong class="text-pink-400">AP</strong> (availability over consistency).
+          <strong class="text-surface-200">CP</strong> (consistency over availability) and 
+          <strong class="text-surface-200">AP</strong> (availability over consistency).
         </p>
       </div>
     </div>
@@ -318,8 +318,8 @@
     <div class="grid md:grid-cols-2 gap-6">
       <div class="space-y-3">
         <div class="flex items-center gap-2">
-          <div class="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center">
-            <span class="text-sm font-bold text-purple-400">CP</span>
+          <div class="w-8 h-8 rounded-lg bg-surface-800 border border-surface-700 flex items-center justify-center">
+            <span class="text-sm font-bold text-surface-200">CP</span>
           </div>
           <span class="font-medium text-surface-200">Choose CP when...</span>
         </div>
@@ -331,7 +331,7 @@
             'Data conflicts are hard to resolve'
           ] as item}
             <li class="text-sm text-surface-400 flex items-start gap-2">
-              <Icons.Check class="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" />
+              <Icons.Check class="w-4 h-4 text-surface-300 mt-0.5 flex-shrink-0" />
               {item}
             </li>
           {/each}
@@ -340,8 +340,8 @@
 
       <div class="space-y-3">
         <div class="flex items-center gap-2">
-          <div class="w-8 h-8 rounded-lg bg-pink-500/20 flex items-center justify-center">
-            <span class="text-sm font-bold text-pink-400">AP</span>
+          <div class="w-8 h-8 rounded-lg bg-surface-800 border border-surface-700 flex items-center justify-center">
+            <span class="text-sm font-bold text-surface-200">AP</span>
           </div>
           <span class="font-medium text-surface-200">Choose AP when...</span>
         </div>
@@ -353,7 +353,7 @@
             'Stale data is better than no data'
           ] as item}
             <li class="text-sm text-surface-400 flex items-start gap-2">
-              <Icons.Check class="w-4 h-4 text-pink-400 mt-0.5 flex-shrink-0" />
+              <Icons.Check class="w-4 h-4 text-surface-300 mt-0.5 flex-shrink-0" />
               {item}
             </li>
           {/each}

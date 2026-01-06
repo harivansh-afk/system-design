@@ -93,26 +93,26 @@
 </svelte:head>
 
 <div class="max-w-6xl mx-auto">
-  <h1 class="text-3xl font-bold text-white mb-2">Kafka vs RabbitMQ</h1>
-  <p class="text-gray-400 mb-8">Event streaming platform vs traditional message broker - understanding the fundamental differences</p>
+  <h1 class="text-3xl font-bold text-surface-100 mb-2">Kafka vs RabbitMQ</h1>
+  <p class="text-surface-400 mb-8">Event streaming platform vs traditional message broker - understanding the fundamental differences</p>
 
   <!-- TL;DR -->
   <section class="mb-12">
-    <div class="bg-gradient-to-r from-orange-500/10 to-green-500/10 rounded-xl p-6 border border-gray-700">
-      <h2 class="text-lg font-semibold text-white mb-4">TL;DR</h2>
+    <div class="card">
+      <h2 class="text-lg font-semibold text-surface-100 mb-4">TL;DR</h2>
       <div class="grid md:grid-cols-2 gap-6">
         <div class="flex items-start gap-3">
           <div class="w-3 h-3 rounded-full bg-orange-500 mt-1.5"></div>
           <div>
             <span class="text-orange-400 font-medium">Kafka</span>
-            <span class="text-gray-300"> = Event streaming. High throughput, message replay, data pipelines.</span>
+            <span class="text-surface-300"> = Event streaming. High throughput, message replay, data pipelines.</span>
           </div>
         </div>
         <div class="flex items-start gap-3">
           <div class="w-3 h-3 rounded-full bg-green-500 mt-1.5"></div>
           <div>
             <span class="text-green-400 font-medium">RabbitMQ</span>
-            <span class="text-gray-300"> = Message broker. Complex routing, guaranteed delivery, task queues.</span>
+            <span class="text-surface-300"> = Message broker. Complex routing, guaranteed delivery, task queues.</span>
           </div>
         </div>
       </div>
@@ -121,14 +121,14 @@
 
   <!-- Architecture Comparison -->
   <section class="mb-12">
-    <h2 class="text-xl font-semibold text-white mb-4">Architecture Difference</h2>
-    <p class="text-gray-400 mb-6">The fundamental architectural difference explains most of their behavior differences.</p>
+    <h2 class="text-xl font-semibold text-surface-100 mb-4">Architecture Difference</h2>
+    <p class="text-surface-400 mb-6">The fundamental architectural difference explains most of their behavior differences.</p>
 
     <div class="grid md:grid-cols-2 gap-6">
       <!-- Kafka -->
-      <div class="bg-gray-800/50 rounded-xl p-6 border border-orange-500/30">
+      <div class="card border-orange-500/30">
         <h3 class="text-lg font-semibold text-orange-400 mb-2">{architectureDiff.kafka.title}</h3>
-        <p class="text-gray-400 text-sm mb-4">{architectureDiff.kafka.description}</p>
+        <p class="text-surface-400 text-sm mb-4">{architectureDiff.kafka.description}</p>
 
         <div class="space-y-3 mb-4">
           {#each architectureDiff.kafka.flow as step, i}
@@ -137,8 +137,8 @@
                 {i + 1}
               </div>
               <div>
-                <div class="text-white font-medium text-sm">{step.label}</div>
-                <div class="text-gray-500 text-xs">{step.desc}</div>
+                <div class="text-surface-100 font-medium text-sm">{step.label}</div>
+                <div class="text-surface-500 text-xs">{step.desc}</div>
               </div>
               {#if i < architectureDiff.kafka.flow.length - 1}
                 <div class="flex-1 border-t border-dashed border-orange-500/30"></div>
@@ -153,9 +153,9 @@
       </div>
 
       <!-- RabbitMQ -->
-      <div class="bg-gray-800/50 rounded-xl p-6 border border-green-500/30">
+      <div class="card border-green-500/30">
         <h3 class="text-lg font-semibold text-green-400 mb-2">{architectureDiff.rabbitmq.title}</h3>
-        <p class="text-gray-400 text-sm mb-4">{architectureDiff.rabbitmq.description}</p>
+        <p class="text-surface-400 text-sm mb-4">{architectureDiff.rabbitmq.description}</p>
 
         <div class="space-y-3 mb-4">
           {#each architectureDiff.rabbitmq.flow as step, i}
@@ -164,8 +164,8 @@
                 {i + 1}
               </div>
               <div>
-                <div class="text-white font-medium text-sm">{step.label}</div>
-                <div class="text-gray-500 text-xs">{step.desc}</div>
+                <div class="text-surface-100 font-medium text-sm">{step.label}</div>
+                <div class="text-surface-500 text-xs">{step.desc}</div>
               </div>
               {#if i < architectureDiff.rabbitmq.flow.length - 1}
                 <div class="flex-1 border-t border-dashed border-green-500/30"></div>
@@ -183,58 +183,58 @@
 
   <!-- Message Lifecycle -->
   <section class="mb-12">
-    <h2 class="text-xl font-semibold text-white mb-4">Message Lifecycle</h2>
+    <h2 class="text-xl font-semibold text-surface-100 mb-4">Message Lifecycle</h2>
 
     <div class="grid md:grid-cols-2 gap-6">
-      <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
+      <div class="card">
         <h3 class="text-lg font-semibold text-orange-400 mb-4">Kafka: Log-Based</h3>
         <div class="space-y-3">
           <div class="flex items-center gap-3 p-3 bg-orange-500/10 rounded-lg">
             <span class="text-2xl">1.</span>
             <div>
-              <div class="text-white">Message written to partition</div>
-              <div class="text-gray-500 text-sm">Appended to end of log with offset</div>
+              <div class="text-surface-100">Message written to partition</div>
+              <div class="text-surface-500 text-sm">Appended to end of log with offset</div>
             </div>
           </div>
           <div class="flex items-center gap-3 p-3 bg-orange-500/10 rounded-lg">
             <span class="text-2xl">2.</span>
             <div>
-              <div class="text-white">Consumers read at their offset</div>
-              <div class="text-gray-500 text-sm">Multiple consumers can read same message</div>
+              <div class="text-surface-100">Consumers read at their offset</div>
+              <div class="text-surface-500 text-sm">Multiple consumers can read same message</div>
             </div>
           </div>
           <div class="flex items-center gap-3 p-3 bg-orange-500/10 rounded-lg">
             <span class="text-2xl">3.</span>
             <div>
-              <div class="text-white">Retention policy deletes old messages</div>
-              <div class="text-gray-500 text-sm">After 7 days or 1GB (configurable)</div>
+              <div class="text-surface-100">Retention policy deletes old messages</div>
+              <div class="text-surface-500 text-sm">After 7 days or 1GB (configurable)</div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
+      <div class="card">
         <h3 class="text-lg font-semibold text-green-400 mb-4">RabbitMQ: Queue-Based</h3>
         <div class="space-y-3">
           <div class="flex items-center gap-3 p-3 bg-green-500/10 rounded-lg">
             <span class="text-2xl">1.</span>
             <div>
-              <div class="text-white">Message routed to queue(s)</div>
-              <div class="text-gray-500 text-sm">Exchange determines destination</div>
+              <div class="text-surface-100">Message routed to queue(s)</div>
+              <div class="text-surface-500 text-sm">Exchange determines destination</div>
             </div>
           </div>
           <div class="flex items-center gap-3 p-3 bg-green-500/10 rounded-lg">
             <span class="text-2xl">2.</span>
             <div>
-              <div class="text-white">Broker pushes to consumer</div>
-              <div class="text-gray-500 text-sm">One consumer receives each message</div>
+              <div class="text-surface-100">Broker pushes to consumer</div>
+              <div class="text-surface-500 text-sm">One consumer receives each message</div>
             </div>
           </div>
           <div class="flex items-center gap-3 p-3 bg-green-500/10 rounded-lg">
             <span class="text-2xl">3.</span>
             <div>
-              <div class="text-white">Consumer acknowledges</div>
-              <div class="text-gray-500 text-sm">Message deleted from queue</div>
+              <div class="text-surface-100">Consumer acknowledges</div>
+              <div class="text-surface-500 text-sm">Message deleted from queue</div>
             </div>
           </div>
         </div>
@@ -244,23 +244,23 @@
 
   <!-- Feature Comparison -->
   <section class="mb-12">
-    <h2 class="text-xl font-semibold text-white mb-4">Feature Comparison</h2>
+    <h2 class="text-xl font-semibold text-surface-100 mb-4">Feature Comparison</h2>
 
-    <div class="bg-gray-800/50 rounded-xl border border-gray-700 overflow-hidden">
+    <div class="bg-surface-900 rounded-xl border border-surface-800 overflow-hidden">
       <table class="w-full">
         <thead>
-          <tr class="border-b border-gray-700">
-            <th class="text-left p-4 text-gray-400 font-medium">Feature</th>
+          <tr class="border-b border-surface-800">
+            <th class="text-left p-4 text-surface-400 font-medium">Feature</th>
             <th class="text-left p-4 text-orange-400 font-medium">Kafka</th>
             <th class="text-left p-4 text-green-400 font-medium">RabbitMQ</th>
           </tr>
         </thead>
         <tbody>
           {#each features as feature, i}
-            <tr class="border-b border-gray-700/50 {i % 2 === 0 ? 'bg-gray-800/30' : ''}">
-              <td class="p-4 text-white font-medium">{feature.name}</td>
-              <td class="p-4 text-gray-300">{feature.kafka}</td>
-              <td class="p-4 text-gray-300">{feature.rabbitmq}</td>
+            <tr class="border-b border-surface-800 {i % 2 === 0 ? 'bg-surface-950/40' : ''}">
+              <td class="p-4 text-surface-100 font-medium">{feature.name}</td>
+              <td class="p-4 text-surface-300">{feature.kafka}</td>
+              <td class="p-4 text-surface-300">{feature.rabbitmq}</td>
             </tr>
           {/each}
         </tbody>
@@ -270,45 +270,45 @@
 
   <!-- When to Use -->
   <section class="mb-12">
-    <h2 class="text-xl font-semibold text-white mb-4">When to Use Each</h2>
+    <h2 class="text-xl font-semibold text-surface-100 mb-4">When to Use Each</h2>
     <ComparisonTable options={comparisonOptions} />
   </section>
 
   <!-- Exchange Types (RabbitMQ) -->
   <section class="mb-12">
-    <h2 class="text-xl font-semibold text-white mb-4">RabbitMQ Routing Patterns</h2>
-    <p class="text-gray-400 mb-4">RabbitMQ's flexible exchange types enable complex routing scenarios that Kafka cannot do natively.</p>
+    <h2 class="text-xl font-semibold text-surface-100 mb-4">RabbitMQ Routing Patterns</h2>
+    <p class="text-surface-400 mb-4">RabbitMQ's flexible exchange types enable complex routing scenarios that Kafka cannot do natively.</p>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+      <div class="bg-surface-900 rounded-xl p-4 border border-surface-800">
         <div class="text-green-400 font-semibold mb-2">Direct</div>
-        <div class="text-gray-400 text-sm">Route by exact routing key match</div>
-        <div class="mt-2 text-xs text-gray-500">order.created to orders queue</div>
+        <div class="text-surface-400 text-sm">Route by exact routing key match</div>
+        <div class="mt-2 text-xs text-surface-500">order.created to orders queue</div>
       </div>
-      <div class="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+      <div class="bg-surface-900 rounded-xl p-4 border border-surface-800">
         <div class="text-green-400 font-semibold mb-2">Topic</div>
-        <div class="text-gray-400 text-sm">Route by pattern matching (*.error)</div>
-        <div class="mt-2 text-xs text-gray-500">app.*.error to error-handler</div>
+        <div class="text-surface-400 text-sm">Route by pattern matching (*.error)</div>
+        <div class="mt-2 text-xs text-surface-500">app.*.error to error-handler</div>
       </div>
-      <div class="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+      <div class="bg-surface-900 rounded-xl p-4 border border-surface-800">
         <div class="text-green-400 font-semibold mb-2">Fanout</div>
-        <div class="text-gray-400 text-sm">Broadcast to all bound queues</div>
-        <div class="mt-2 text-xs text-gray-500">notification to all subscribers</div>
+        <div class="text-surface-400 text-sm">Broadcast to all bound queues</div>
+        <div class="mt-2 text-xs text-surface-500">notification to all subscribers</div>
       </div>
-      <div class="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+      <div class="bg-surface-900 rounded-xl p-4 border border-surface-800">
         <div class="text-green-400 font-semibold mb-2">Headers</div>
-        <div class="text-gray-400 text-sm">Route by message headers</div>
-        <div class="mt-2 text-xs text-gray-500">x-priority: high to fast queue</div>
+        <div class="text-surface-400 text-sm">Route by message headers</div>
+        <div class="mt-2 text-xs text-surface-500">x-priority: high to fast queue</div>
       </div>
     </div>
   </section>
 
   <!-- Kafka Partitions -->
   <section class="mb-12">
-    <h2 class="text-xl font-semibold text-white mb-4">Kafka Partitioning</h2>
-    <p class="text-gray-400 mb-4">Kafka achieves scalability through partitions - each partition is an ordered, immutable log.</p>
+    <h2 class="text-xl font-semibold text-surface-100 mb-4">Kafka Partitioning</h2>
+    <p class="text-surface-400 mb-4">Kafka achieves scalability through partitions - each partition is an ordered, immutable log.</p>
 
-    <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
+    <div class="bg-surface-900 rounded-xl p-6 border border-surface-800">
       <div class="grid md:grid-cols-3 gap-4 mb-6">
         <div class="p-4 bg-orange-500/10 rounded-lg border border-orange-500/30">
           <div class="text-orange-400 font-semibold mb-1">Partition 0</div>
@@ -338,16 +338,16 @@
 
       <div class="grid md:grid-cols-3 gap-4 text-sm">
         <div>
-          <div class="text-white font-medium">Ordering</div>
-          <div class="text-gray-400">Guaranteed within partition only</div>
+          <div class="text-surface-100 font-medium">Ordering</div>
+          <div class="text-surface-400">Guaranteed within partition only</div>
         </div>
         <div>
-          <div class="text-white font-medium">Parallelism</div>
-          <div class="text-gray-400">Max consumers = number of partitions</div>
+          <div class="text-surface-100 font-medium">Parallelism</div>
+          <div class="text-surface-400">Max consumers = number of partitions</div>
         </div>
         <div>
-          <div class="text-white font-medium">Key-based routing</div>
-          <div class="text-gray-400">Same key always goes to same partition</div>
+          <div class="text-surface-100 font-medium">Key-based routing</div>
+          <div class="text-surface-400">Same key always goes to same partition</div>
         </div>
       </div>
     </div>
@@ -355,49 +355,49 @@
 
   <!-- Use Case Examples -->
   <section>
-    <h2 class="text-xl font-semibold text-white mb-4">Real World Examples</h2>
+    <h2 class="text-xl font-semibold text-surface-100 mb-4">Real World Examples</h2>
 
     <div class="grid md:grid-cols-2 gap-6">
-      <div class="bg-gray-800/50 rounded-xl p-6 border border-orange-500/30">
+      <div class="card border-orange-500/30">
         <h3 class="text-lg font-semibold text-orange-400 mb-4">Kafka Use Cases</h3>
         <div class="space-y-3">
-          <div class="p-3 bg-gray-700/50 rounded-lg">
-            <div class="text-white font-medium">Real-time Analytics</div>
-            <div class="text-gray-400 text-sm">Stream clickstream data to analytics pipeline</div>
+          <div class="p-3 bg-surface-800/60 border border-surface-800 rounded-lg">
+            <div class="text-surface-100 font-medium">Real-time Analytics</div>
+            <div class="text-surface-400 text-sm">Stream clickstream data to analytics pipeline</div>
           </div>
-          <div class="p-3 bg-gray-700/50 rounded-lg">
-            <div class="text-white font-medium">Event Sourcing</div>
-            <div class="text-gray-400 text-sm">Store all state changes as immutable events</div>
+          <div class="p-3 bg-surface-800/60 border border-surface-800 rounded-lg">
+            <div class="text-surface-100 font-medium">Event Sourcing</div>
+            <div class="text-surface-400 text-sm">Store all state changes as immutable events</div>
           </div>
-          <div class="p-3 bg-gray-700/50 rounded-lg">
-            <div class="text-white font-medium">Log Aggregation</div>
-            <div class="text-gray-400 text-sm">Centralize logs from thousands of services</div>
+          <div class="p-3 bg-surface-800/60 border border-surface-800 rounded-lg">
+            <div class="text-surface-100 font-medium">Log Aggregation</div>
+            <div class="text-surface-400 text-sm">Centralize logs from thousands of services</div>
           </div>
-          <div class="p-3 bg-gray-700/50 rounded-lg">
-            <div class="text-white font-medium">CDC Pipelines</div>
-            <div class="text-gray-400 text-sm">Stream database changes to data warehouse</div>
+          <div class="p-3 bg-surface-800/60 border border-surface-800 rounded-lg">
+            <div class="text-surface-100 font-medium">CDC Pipelines</div>
+            <div class="text-surface-400 text-sm">Stream database changes to data warehouse</div>
           </div>
         </div>
       </div>
 
-      <div class="bg-gray-800/50 rounded-xl p-6 border border-green-500/30">
+      <div class="card border-green-500/30">
         <h3 class="text-lg font-semibold text-green-400 mb-4">RabbitMQ Use Cases</h3>
         <div class="space-y-3">
-          <div class="p-3 bg-gray-700/50 rounded-lg">
-            <div class="text-white font-medium">Task Queues</div>
-            <div class="text-gray-400 text-sm">Background job processing with retries</div>
+          <div class="p-3 bg-surface-800/60 border border-surface-800 rounded-lg">
+            <div class="text-surface-100 font-medium">Task Queues</div>
+            <div class="text-surface-400 text-sm">Background job processing with retries</div>
           </div>
-          <div class="p-3 bg-gray-700/50 rounded-lg">
-            <div class="text-white font-medium">Microservices</div>
-            <div class="text-gray-400 text-sm">Async communication between services</div>
+          <div class="p-3 bg-surface-800/60 border border-surface-800 rounded-lg">
+            <div class="text-surface-100 font-medium">Microservices</div>
+            <div class="text-surface-400 text-sm">Async communication between services</div>
           </div>
-          <div class="p-3 bg-gray-700/50 rounded-lg">
-            <div class="text-white font-medium">IoT Messaging</div>
-            <div class="text-gray-400 text-sm">MQTT protocol for device communication</div>
+          <div class="p-3 bg-surface-800/60 border border-surface-800 rounded-lg">
+            <div class="text-surface-100 font-medium">IoT Messaging</div>
+            <div class="text-surface-400 text-sm">MQTT protocol for device communication</div>
           </div>
-          <div class="p-3 bg-gray-700/50 rounded-lg">
-            <div class="text-white font-medium">Request/Reply</div>
-            <div class="text-gray-400 text-sm">RPC-style communication patterns</div>
+          <div class="p-3 bg-surface-800/60 border border-surface-800 rounded-lg">
+            <div class="text-surface-100 font-medium">Request/Reply</div>
+            <div class="text-surface-400 text-sm">RPC-style communication patterns</div>
           </div>
         </div>
       </div>

@@ -8,7 +8,6 @@
       title: 'Fundamentals',
       description: 'Core distributed systems concepts: CAP theorem, consistency, scaling',
       icon: 'BookOpen',
-      color: 'from-blue-500 to-cyan-500',
       href: '/fundamentals/cap-theorem'
     },
     {
@@ -16,7 +15,6 @@
       title: 'Compute',
       description: 'VMs, serverless, containers, and Kubernetes',
       icon: 'Cpu',
-      color: 'from-purple-500 to-pink-500',
       href: '/compute/virtual-machines'
     },
     {
@@ -24,7 +22,6 @@
       title: 'Databases',
       description: 'SQL, NoSQL, caching, replication patterns',
       icon: 'Database',
-      color: 'from-green-500 to-emerald-500',
       href: '/databases/sql'
     },
     {
@@ -32,7 +29,6 @@
       title: 'Networking',
       description: 'VPC, DNS, load balancing, CDN',
       icon: 'Network',
-      color: 'from-orange-500 to-red-500',
       href: '/networking/vpc'
     },
     {
@@ -40,7 +36,6 @@
       title: 'Messaging',
       description: 'Message queues, pub/sub, event-driven architecture',
       icon: 'MessageSquare',
-      color: 'from-yellow-500 to-orange-500',
       href: '/messaging/queues'
     },
     {
@@ -48,7 +43,6 @@
       title: 'Decision Trees',
       description: 'Interactive guides: which database? serverless or not?',
       icon: 'GitBranch',
-      color: 'from-indigo-500 to-purple-500',
       href: '/decisions/which-database'
     }
   ];
@@ -72,13 +66,13 @@
 <div class="max-w-6xl mx-auto space-y-12">
   <!-- Hero Section -->
   <div class="text-center space-y-6 py-8">
-    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm">
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-900 border border-surface-800 text-surface-300 text-sm">
       <Icons.Sparkles class="w-4 h-4" />
       Interactive Visual Learning
     </div>
     
     <h1 class="text-4xl md:text-5xl font-bold text-surface-100">
-      Master <span class="text-gradient">System Design</span>
+      Master System Design
     </h1>
     
     <p class="text-lg text-surface-400 max-w-2xl mx-auto">
@@ -107,8 +101,8 @@
         class="card-hover group"
       >
         <div class="flex items-start gap-4">
-          <div class="w-12 h-12 rounded-xl bg-gradient-to-br {category.color} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-200">
-            <Icon class="w-6 h-6 text-white" />
+          <div class="w-12 h-12 rounded-xl bg-surface-800 border border-surface-700 flex items-center justify-center flex-shrink-0 group-hover:border-surface-600 transition-colors duration-200">
+            <Icon class="w-6 h-6 text-surface-200" />
           </div>
           <div>
             <h3 class="font-semibold text-surface-100 group-hover:text-white transition-colors">
@@ -117,7 +111,7 @@
             <p class="text-sm text-surface-400 mt-1">{category.description}</p>
           </div>
         </div>
-        <div class="mt-4 flex items-center text-sm text-blue-400 group-hover:text-blue-300">
+        <div class="mt-4 flex items-center text-sm text-surface-400 group-hover:text-surface-200">
           <span>Explore</span>
           <Icons.ArrowRight class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
         </div>
@@ -128,8 +122,8 @@
   <!-- Quick Comparisons -->
   <div class="card">
     <div class="flex items-center gap-3 mb-6">
-      <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
-        <Icons.Scale class="w-5 h-5 text-purple-400" />
+      <div class="w-10 h-10 rounded-lg bg-surface-800 border border-surface-700 flex items-center justify-center">
+        <Icons.Scale class="w-5 h-5 text-surface-300" />
       </div>
       <div>
         <h2 class="font-semibold text-surface-100">Quick Comparisons</h2>
@@ -197,8 +191,8 @@
   <!-- Key Concepts Preview -->
   <div class="card">
     <div class="flex items-center gap-3 mb-6">
-      <div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
-        <Icons.Lightbulb class="w-5 h-5 text-green-400" />
+      <div class="w-10 h-10 rounded-lg bg-surface-800 border border-surface-700 flex items-center justify-center">
+        <Icons.Lightbulb class="w-5 h-5 text-surface-300" />
       </div>
       <div>
         <h2 class="font-semibold text-surface-100">Key Concepts You'll Learn</h2>

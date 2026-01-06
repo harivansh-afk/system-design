@@ -30,22 +30,22 @@
   const borderColor = $derived({
     aws: 'border-aws-orange',
     gcp: 'border-gcp-blue',
-    concept: 'border-purple-500',
-    default: 'border-surface-600'
+    concept: 'border-surface-700',
+    default: 'border-surface-800'
   }[type]);
 
   const bgColor = $derived({
     aws: 'bg-aws-orange/10',
     gcp: 'bg-gcp-blue/10',
-    concept: 'bg-purple-500/10',
-    default: 'bg-surface-800'
+    concept: 'bg-surface-900',
+    default: 'bg-surface-900'
   }[type]);
 
   const iconColor = $derived({
     aws: 'text-aws-orange',
     gcp: 'text-gcp-blue',
-    concept: 'text-purple-400',
-    default: 'text-surface-300'
+    concept: 'text-surface-200',
+    default: 'text-surface-200'
   }[type]);
 </script>
 
@@ -53,7 +53,7 @@
   {onclick}
   class="relative group cursor-pointer transition-all duration-200 transform hover:scale-105"
   class:ring-2={selected}
-  class:ring-blue-500={selected}
+  class:ring-surface-200={selected}
   class:ring-offset-2={selected}
   class:ring-offset-surface-950={selected}
 >
@@ -70,9 +70,9 @@
 
     <!-- Description (on hover) -->
     {#if description}
-      <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-surface-800 rounded-lg text-xs text-surface-300 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 border border-surface-700 shadow-lg">
+      <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-surface-900 rounded-lg text-xs text-surface-300 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 border border-surface-800 shadow-lg">
         {description}
-        <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-1 w-2 h-2 bg-surface-800 border-r border-b border-surface-700 transform rotate-45"></div>
+        <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-1 w-2 h-2 bg-surface-900 border-r border-b border-surface-800 transform rotate-45"></div>
       </div>
     {/if}
   </div>
@@ -82,7 +82,7 @@
     <span class="absolute -top-2 -right-2 px-1.5 py-0.5 text-[10px] font-medium rounded-full uppercase
       {type === 'aws' ? 'bg-aws-orange text-white' : ''}
       {type === 'gcp' ? 'bg-gcp-blue text-white' : ''}
-      {type === 'concept' ? 'bg-purple-500 text-white' : ''}
+      {type === 'concept' ? 'bg-surface-200 text-surface-950' : ''}
     ">
       {type}
     </span>

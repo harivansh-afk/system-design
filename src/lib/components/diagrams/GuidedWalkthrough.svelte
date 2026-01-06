@@ -106,7 +106,7 @@
   <div class="relative">
     <div class="h-1 bg-surface-800 rounded-full overflow-hidden">
       <div 
-        class="h-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300"
+        class="h-full bg-surface-100 transition-all duration-300"
         style="width: {progress}%"
       ></div>
     </div>
@@ -122,12 +122,15 @@
       {@const Icon = getIcon(s.icon)}
       <button
         onclick={() => goToStep(i)}
-        class="flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200"
-        class:bg-blue-600={i === currentStep}
-        class:text-white={i === currentStep}
-        class:bg-surface-800={i !== currentStep && i <= currentStep}
-        class:text-surface-300={i !== currentStep && i <= currentStep}
-        class:bg-surface-900={i > currentStep}
+        class="flex items-center gap-2 px-3 py-2 rounded-lg border transition-colors duration-200"
+        class:bg-surface-100={i === currentStep}
+        class:border-surface-200={i === currentStep}
+        class:text-surface-950={i === currentStep}
+        class:bg-surface-900={i !== currentStep && i <= currentStep}
+        class:border-surface-800={i !== currentStep && i <= currentStep}
+        class:text-surface-200={i !== currentStep && i <= currentStep}
+        class:bg-surface-950={i > currentStep}
+        class:border-surface-900={i > currentStep}
         class:text-surface-600={i > currentStep}
       >
         <Icon class="w-4 h-4" />
@@ -146,8 +149,8 @@
       <div class="flex items-start gap-6">
         <!-- Icon -->
         <div class="flex-shrink-0">
-          <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-            <StepIcon class="w-8 h-8 text-blue-400" />
+          <div class="w-16 h-16 rounded-xl bg-surface-900 border border-surface-800 flex items-center justify-center">
+            <StepIcon class="w-8 h-8 text-surface-200" />
           </div>
         </div>
 
@@ -163,8 +166,8 @@
           {#if step.details}
             <div class="bg-surface-800 rounded-lg p-4 border border-surface-700">
               <div class="flex items-center gap-2 mb-2">
-                <Icons.Info class="w-4 h-4 text-blue-400" />
-                <span class="text-sm font-medium text-blue-400">Technical Details</span>
+                <Icons.Info class="w-4 h-4 text-surface-300" />
+                <span class="text-sm font-medium text-surface-300">Technical Details</span>
               </div>
               <p class="text-sm text-surface-400">{step.details}</p>
             </div>
@@ -200,9 +203,9 @@
         <button
           onclick={() => goToStep(i)}
           class="w-2 h-2 rounded-full transition-all duration-200"
-          class:bg-blue-500={i === currentStep}
+          class:bg-surface-100={i === currentStep}
           class:w-4={i === currentStep}
-          class:bg-surface-600={i !== currentStep}
+          class:bg-surface-700={i !== currentStep}
         ></button>
       {/each}
     </div>

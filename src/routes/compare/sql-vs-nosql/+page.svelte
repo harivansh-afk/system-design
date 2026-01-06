@@ -248,10 +248,10 @@
   />
 
   <!-- The Real Question -->
-  <div class="card bg-gradient-to-br from-purple-500/10 to-pink-500/10 border-purple-500/30">
+  <div class="card">
     <div class="flex items-start gap-4">
-      <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0">
-        <Icons.Lightbulb class="w-5 h-5 text-purple-400" />
+      <div class="w-10 h-10 rounded-lg bg-surface-800 border border-surface-700 flex items-center justify-center flex-shrink-0">
+        <Icons.Lightbulb class="w-5 h-5 text-surface-300" />
       </div>
       <div>
         <h3 class="font-semibold text-surface-100 mb-2">The Real Question to Ask</h3>

@@ -34,14 +34,14 @@
   <div class="h-16 flex items-center px-4 border-b border-surface-800">
     {#if $sidebarOpen}
       <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
-          <Icons.Layers class="w-5 h-5 text-white" />
+        <div class="w-8 h-8 rounded-lg bg-surface-800 border border-surface-700 flex items-center justify-center">
+          <Icons.Layers class="w-5 h-5 text-surface-200" />
         </div>
         <span class="font-bold text-lg text-surface-100">System Design</span>
       </div>
     {:else}
-      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center mx-auto">
-        <Icons.Layers class="w-5 h-5 text-white" />
+      <div class="w-8 h-8 rounded-lg bg-surface-800 border border-surface-700 flex items-center justify-center mx-auto">
+        <Icons.Layers class="w-5 h-5 text-surface-200" />
       </div>
     {/if}
   </div>
@@ -76,9 +76,10 @@
         {:else}
           <a
             href={item.href}
-            class="w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors duration-150"
-            class:bg-blue-600={active}
-            class:text-white={active}
+            class="w-full flex items-center gap-3 px-3 py-2 rounded-lg border border-transparent transition-colors duration-150"
+            class:bg-surface-800={active}
+            class:border-surface-700={active}
+            class:text-surface-100={active}
             class:text-surface-400={!active}
             class:hover:bg-surface-800={!active}
             class:hover:text-surface-200={!active}
@@ -97,7 +98,7 @@
               {@const childActive = isActive(child.href)}
               <a
                 href={child.href}
-                class="flex items-center gap-3 px-3 py-1.5 rounded-lg text-sm transition-colors duration-150 {childActive ? 'bg-blue-600/20 text-blue-400' : 'text-surface-500 hover:bg-surface-800 hover:text-surface-300'}"
+                class="flex items-center gap-3 px-3 py-1.5 rounded-lg border border-transparent text-sm transition-colors duration-150 {childActive ? 'bg-surface-800 text-surface-200 border-surface-700' : 'text-surface-500 hover:bg-surface-800 hover:text-surface-300'}"
               >
                 <ChildIcon class="w-4 h-4 flex-shrink-0" />
                 <span>{child.label}</span>

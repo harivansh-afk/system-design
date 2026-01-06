@@ -203,29 +203,29 @@
 </svelte:head>
 
 <div class="max-w-6xl mx-auto">
-  <h1 class="text-3xl font-bold text-white mb-2">Caching Patterns</h1>
-  <p class="text-gray-400 mb-8">Understanding different caching strategies and when to use each</p>
+  <h1 class="text-3xl font-bold text-surface-100 mb-2">Caching Patterns</h1>
+  <p class="text-surface-400 mb-8">Understanding different caching strategies and when to use each</p>
 
   <!-- Overview -->
   <section class="mb-12">
-    <div class="bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-xl p-6 border border-gray-700">
-      <h2 class="text-lg font-semibold text-white mb-4">Why Caching Matters</h2>
+    <div class="card">
+      <h2 class="text-lg font-semibold text-surface-100 mb-4">Why Caching Matters</h2>
       <div class="grid md:grid-cols-4 gap-4 text-center">
-        <div class="p-4 bg-gray-800/50 rounded-lg">
+        <div class="p-4 bg-surface-800/60 border border-surface-800 rounded-lg">
           <div class="text-3xl font-bold text-blue-400">10-100x</div>
-          <div class="text-gray-400 text-sm">Faster than database</div>
+          <div class="text-surface-400 text-sm">Faster than database</div>
         </div>
-        <div class="p-4 bg-gray-800/50 rounded-lg">
+        <div class="p-4 bg-surface-800/60 border border-surface-800 rounded-lg">
           <div class="text-3xl font-bold text-green-400">&lt;1ms</div>
-          <div class="text-gray-400 text-sm">Cache read latency</div>
+          <div class="text-surface-400 text-sm">Cache read latency</div>
         </div>
-        <div class="p-4 bg-gray-800/50 rounded-lg">
+        <div class="p-4 bg-surface-800/60 border border-surface-800 rounded-lg">
           <div class="text-3xl font-bold text-purple-400">90%+</div>
-          <div class="text-gray-400 text-sm">Target hit rate</div>
+          <div class="text-surface-400 text-sm">Target hit rate</div>
         </div>
-        <div class="p-4 bg-gray-800/50 rounded-lg">
+        <div class="p-4 bg-surface-800/60 border border-surface-800 rounded-lg">
           <div class="text-3xl font-bold text-orange-400">$$$</div>
-          <div class="text-gray-400 text-sm">Reduced DB costs</div>
+          <div class="text-surface-400 text-sm">Reduced DB costs</div>
         </div>
       </div>
     </div>
@@ -233,12 +233,12 @@
 
   <!-- Pattern Cards -->
   <section class="mb-12">
-    <h2 class="text-xl font-semibold text-white mb-4">Caching Patterns</h2>
+    <h2 class="text-xl font-semibold text-surface-100 mb-4">Caching Patterns</h2>
 
     <div class="grid gap-6">
       {#each patterns as pattern}
         <div
-          class="bg-gray-800/50 rounded-xl border border-gray-700 overflow-hidden cursor-pointer transition-all hover:border-gray-500"
+          class="bg-surface-900 rounded-xl border border-surface-800 overflow-hidden cursor-pointer transition-colors hover:border-surface-700"
           class:border-blue-500={selectedPattern === pattern.id && pattern.color === 'blue'}
           class:border-green-500={selectedPattern === pattern.id && pattern.color === 'green'}
           class:border-purple-500={selectedPattern === pattern.id && pattern.color === 'purple'}
@@ -252,8 +252,8 @@
           <div class="p-6">
             <div class="flex items-start justify-between mb-4">
               <div>
-                <h3 class="text-lg font-semibold text-white">{pattern.name}</h3>
-                <p class="text-gray-400 text-sm">{pattern.description}</p>
+                <h3 class="text-lg font-semibold text-surface-100">{pattern.name}</h3>
+                <p class="text-surface-400 text-sm">{pattern.description}</p>
               </div>
               <span class="px-3 py-1 rounded-full text-xs font-medium
                 {pattern.color === 'blue' ? 'bg-blue-500/20 text-blue-400' : ''}
@@ -269,23 +269,23 @@
             <div class="flex items-center gap-2 mb-4 overflow-x-auto pb-2">
               {#each pattern.steps as step, i}
                 <div class="flex items-center">
-                  <div class="px-3 py-2 bg-gray-700/50 rounded-lg text-sm text-gray-300 whitespace-nowrap">
+                  <div class="px-3 py-2 bg-surface-800/60 border border-surface-800 rounded-lg text-sm text-surface-300 whitespace-nowrap">
                     {step}
                   </div>
                   {#if i < pattern.steps.length - 1}
-                    <span class="mx-2 text-gray-500">-></span>
+                    <span class="mx-2 text-surface-600">-></span>
                   {/if}
                 </div>
               {/each}
             </div>
 
             {#if selectedPattern === pattern.id}
-              <div class="grid md:grid-cols-2 gap-4 pt-4 border-t border-gray-700">
+              <div class="grid md:grid-cols-2 gap-4 pt-4 border-t border-surface-800">
                 <div>
                   <h4 class="text-green-400 font-medium mb-2">Pros</h4>
                   <ul class="space-y-1">
                     {#each pattern.pros as pro}
-                      <li class="text-gray-300 text-sm flex items-start gap-2">
+                      <li class="text-surface-300 text-sm flex items-start gap-2">
                         <span class="text-green-400">+</span>
                         {pro}
                       </li>
@@ -296,7 +296,7 @@
                   <h4 class="text-red-400 font-medium mb-2">Cons</h4>
                   <ul class="space-y-1">
                     {#each pattern.cons as con}
-                      <li class="text-gray-300 text-sm flex items-start gap-2">
+                      <li class="text-surface-300 text-sm flex items-start gap-2">
                         <span class="text-red-400">-</span>
                         {con}
                       </li>
@@ -313,21 +313,21 @@
 
   <!-- Cache-Aside Walkthrough -->
   <section class="mb-12">
-    <h2 class="text-xl font-semibold text-white mb-4">Cache-Aside in Detail</h2>
-    <p class="text-gray-400 mb-6">The most common caching pattern - walk through each step.</p>
+    <h2 class="text-xl font-semibold text-surface-100 mb-4">Cache-Aside in Detail</h2>
+    <p class="text-surface-400 mb-6">The most common caching pattern - walk through each step.</p>
     <GuidedWalkthrough {...cacheAsideWalkthrough} />
   </section>
 
   <!-- Eviction Strategies -->
   <section class="mb-12">
-    <h2 class="text-xl font-semibold text-white mb-4">Eviction Strategies</h2>
-    <p class="text-gray-400 mb-6">When cache is full, which items should be removed?</p>
+    <h2 class="text-xl font-semibold text-surface-100 mb-4">Eviction Strategies</h2>
+    <p class="text-surface-400 mb-6">When cache is full, which items should be removed?</p>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
       {#each evictionStrategies as strategy}
-        <div class="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
-          <h3 class="text-white font-semibold mb-2">{strategy.name}</h3>
-          <p class="text-gray-400 text-sm mb-3">{strategy.description}</p>
+        <div class="bg-surface-900 rounded-xl p-4 border border-surface-800">
+          <h3 class="text-surface-100 font-semibold mb-2">{strategy.name}</h3>
+          <p class="text-surface-400 text-sm mb-3">{strategy.description}</p>
           <div class="text-xs text-blue-400">Best for: {strategy.best}</div>
         </div>
       {/each}
@@ -336,17 +336,17 @@
 
   <!-- Common Issues -->
   <section class="mb-12">
-    <h2 class="text-xl font-semibold text-white mb-4">Common Caching Problems</h2>
+    <h2 class="text-xl font-semibold text-surface-100 mb-4">Common Caching Problems</h2>
 
     <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-gray-800/50 rounded-xl p-6 border border-red-500/30">
+      <div class="card border-red-500/30">
         <h3 class="text-red-400 font-semibold mb-3">Cache Stampede</h3>
-        <p class="text-gray-400 text-sm mb-4">
+        <p class="text-surface-400 text-sm mb-4">
           Many requests hit an expired cache key simultaneously, all querying the database at once.
         </p>
-        <div class="p-3 bg-gray-700/50 rounded-lg">
+        <div class="p-3 bg-surface-800/60 border border-surface-800 rounded-lg">
           <div class="text-green-400 text-sm font-medium mb-1">Solutions:</div>
-          <ul class="text-gray-300 text-sm space-y-1">
+          <ul class="text-surface-300 text-sm space-y-1">
             <li>- Lock/mutex on cache refresh</li>
             <li>- Staggered TTLs</li>
             <li>- Background refresh</li>
@@ -354,14 +354,14 @@
         </div>
       </div>
 
-      <div class="bg-gray-800/50 rounded-xl p-6 border border-yellow-500/30">
+      <div class="card border-yellow-500/30">
         <h3 class="text-yellow-400 font-semibold mb-3">Stale Data</h3>
-        <p class="text-gray-400 text-sm mb-4">
+        <p class="text-surface-400 text-sm mb-4">
           Cache contains outdated data that does not reflect current database state.
         </p>
-        <div class="p-3 bg-gray-700/50 rounded-lg">
+        <div class="p-3 bg-surface-800/60 border border-surface-800 rounded-lg">
           <div class="text-green-400 text-sm font-medium mb-1">Solutions:</div>
-          <ul class="text-gray-300 text-sm space-y-1">
+          <ul class="text-surface-300 text-sm space-y-1">
             <li>- Appropriate TTL values</li>
             <li>- Cache invalidation on writes</li>
             <li>- Write-through pattern</li>
@@ -369,14 +369,14 @@
         </div>
       </div>
 
-      <div class="bg-gray-800/50 rounded-xl p-6 border border-orange-500/30">
+      <div class="card border-orange-500/30">
         <h3 class="text-orange-400 font-semibold mb-3">Cache Penetration</h3>
-        <p class="text-gray-400 text-sm mb-4">
+        <p class="text-surface-400 text-sm mb-4">
           Requests for non-existent data bypass cache and always hit the database.
         </p>
-        <div class="p-3 bg-gray-700/50 rounded-lg">
+        <div class="p-3 bg-surface-800/60 border border-surface-800 rounded-lg">
           <div class="text-green-400 text-sm font-medium mb-1">Solutions:</div>
-          <ul class="text-gray-300 text-sm space-y-1">
+          <ul class="text-surface-300 text-sm space-y-1">
             <li>- Cache negative results</li>
             <li>- Bloom filter for existence check</li>
             <li>- Input validation</li>
@@ -388,52 +388,52 @@
 
   <!-- Redis vs Memcached -->
   <section>
-    <h2 class="text-xl font-semibold text-white mb-4">Redis vs Memcached</h2>
+    <h2 class="text-xl font-semibold text-surface-100 mb-4">Redis vs Memcached</h2>
 
-    <div class="bg-gray-800/50 rounded-xl border border-gray-700 overflow-hidden">
+    <div class="bg-surface-900 rounded-xl border border-surface-800 overflow-hidden">
       <table class="w-full">
         <thead>
-          <tr class="border-b border-gray-700">
-            <th class="text-left p-4 text-gray-400 font-medium">Feature</th>
+          <tr class="border-b border-surface-800">
+            <th class="text-left p-4 text-surface-400 font-medium">Feature</th>
             <th class="text-left p-4 text-red-400 font-medium">Redis</th>
             <th class="text-left p-4 text-green-400 font-medium">Memcached</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="border-b border-gray-700/50">
-            <td class="p-4 text-white">Data Structures</td>
-            <td class="p-4 text-gray-300">Strings, Lists, Sets, Hashes, Sorted Sets</td>
-            <td class="p-4 text-gray-300">Strings only</td>
+          <tr class="border-b border-surface-800">
+            <td class="p-4 text-surface-100">Data Structures</td>
+            <td class="p-4 text-surface-300">Strings, Lists, Sets, Hashes, Sorted Sets</td>
+            <td class="p-4 text-surface-300">Strings only</td>
           </tr>
-          <tr class="border-b border-gray-700/50 bg-gray-800/30">
-            <td class="p-4 text-white">Persistence</td>
-            <td class="p-4 text-gray-300">Yes (RDB, AOF)</td>
-            <td class="p-4 text-gray-300">No</td>
+          <tr class="border-b border-surface-800 bg-surface-950/40">
+            <td class="p-4 text-surface-100">Persistence</td>
+            <td class="p-4 text-surface-300">Yes (RDB, AOF)</td>
+            <td class="p-4 text-surface-300">No</td>
           </tr>
-          <tr class="border-b border-gray-700/50">
-            <td class="p-4 text-white">Replication</td>
-            <td class="p-4 text-gray-300">Built-in</td>
-            <td class="p-4 text-gray-300">No</td>
+          <tr class="border-b border-surface-800">
+            <td class="p-4 text-surface-100">Replication</td>
+            <td class="p-4 text-surface-300">Built-in</td>
+            <td class="p-4 text-surface-300">No</td>
           </tr>
-          <tr class="border-b border-gray-700/50 bg-gray-800/30">
-            <td class="p-4 text-white">Pub/Sub</td>
-            <td class="p-4 text-gray-300">Yes</td>
-            <td class="p-4 text-gray-300">No</td>
+          <tr class="border-b border-surface-800 bg-surface-950/40">
+            <td class="p-4 text-surface-100">Pub/Sub</td>
+            <td class="p-4 text-surface-300">Yes</td>
+            <td class="p-4 text-surface-300">No</td>
           </tr>
-          <tr class="border-b border-gray-700/50">
-            <td class="p-4 text-white">Lua Scripting</td>
-            <td class="p-4 text-gray-300">Yes</td>
-            <td class="p-4 text-gray-300">No</td>
+          <tr class="border-b border-surface-800">
+            <td class="p-4 text-surface-100">Lua Scripting</td>
+            <td class="p-4 text-surface-300">Yes</td>
+            <td class="p-4 text-surface-300">No</td>
           </tr>
-          <tr class="border-b border-gray-700/50 bg-gray-800/30">
-            <td class="p-4 text-white">Memory Efficiency</td>
-            <td class="p-4 text-gray-300">Good</td>
-            <td class="p-4 text-gray-300">Better (simpler)</td>
+          <tr class="border-b border-surface-800 bg-surface-950/40">
+            <td class="p-4 text-surface-100">Memory Efficiency</td>
+            <td class="p-4 text-surface-300">Good</td>
+            <td class="p-4 text-surface-300">Better (simpler)</td>
           </tr>
           <tr>
-            <td class="p-4 text-white">Best For</td>
-            <td class="p-4 text-gray-300">Feature-rich caching, sessions, queues</td>
-            <td class="p-4 text-gray-300">Simple, high-throughput key-value cache</td>
+            <td class="p-4 text-surface-100">Best For</td>
+            <td class="p-4 text-surface-300">Feature-rich caching, sessions, queues</td>
+            <td class="p-4 text-surface-300">Simple, high-throughput key-value cache</td>
           </tr>
         </tbody>
       </table>
