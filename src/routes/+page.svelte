@@ -70,7 +70,7 @@
   <!-- Hero Section -->
   <div class="text-center space-y-6 py-8 relative">
     <a
-      href="https://github.com/harivansh-afk/system-design"
+      href="https://git.harivan.sh/harivansh-afk/system-design"
       target="_blank"
       rel="noopener noreferrer"
       class="absolute top-0 right-0 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-800 border border-surface-700 text-surface-300 text-sm hover:bg-surface-700 hover:text-surface-100 transition-colors"
